@@ -2,26 +2,7 @@ import os
 import json
 import sys
 from pydantic import ValidationError
-import logging
-
-#Path to log file.
-log_file = os.path.join(os.path.dirname(__file__),"..","logs","provisioning.log")
-
-#Check if logs directory exists.
-os.makedirs(os.path.dirname(log_file), exist_ok=True)
-
-#Configure logging.
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
-if not logger.handlers:
-    fh = logging.FileHandler(log_file)
-    fh.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
-    logger.addHandler(fh)
-
-#Allow imports from the parent directory.
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-
+from src.logging_config import logger
 from src.machine import Machine
 from scripts.Nginx_installation import run_nginx_installer
 

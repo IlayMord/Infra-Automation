@@ -3,7 +3,7 @@
 #The script installs Nginx on the system.
 
 #Log file location.
-log_file="$(dirname "$0")/../logs/installation.log"
+log_file="$(dirname "$0")/../logs/provisioning.log"
 
 #logging format.
 log() {

@@ -1,21 +1,5 @@
 from pydantic import BaseModel,field_validator
-import logging
-import os
-
-#Path to log file.
-log_file = os.path.join(os.path.dirname(__file__),"..","logs","machine.log")
-
-#Check if logs directory exists.
-os.makedirs(os.path.dirname(log_file), exist_ok=True)
-
-#Configure logging.
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
-if not logger.handlers:
-    fh = logging.FileHandler(log_file)
-    fh.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
-    logger.addHandler(fh)
+from src.logging_config import logger
 
 class Machine(BaseModel):
     Name: str
@@ -23,7 +7,6 @@ class Machine(BaseModel):
     CPU: int
     RAM: int
     DiskSize: int
-
 
     #Validators.
     @field_validator("Name")

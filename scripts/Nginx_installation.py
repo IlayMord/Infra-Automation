@@ -1,23 +1,7 @@
 import subprocess
 import os
 import sys
-import logging
-
-#Path to log file.
-log_file = os.path.join(os.path.dirname(__file__),"..","logs","installation.log")
-
-#Check if logs directory exists.
-os.makedirs(os.path.dirname(log_file), exist_ok=True)
-
-
-#Configure logging.
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
-if not logger.handlers:
-    fh = logging.FileHandler(log_file)
-    fh.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
-    logger.addHandler(fh)
+from src.logging_config import logger
 
 def run_nginx_installer():
 
