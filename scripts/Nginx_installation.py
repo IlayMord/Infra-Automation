@@ -32,7 +32,6 @@ def run_nginx_installer():
     try:
         #Running the Bash script using subprocess.
         subprocess.run(["bash",script_path],check=True,text=True)
-        logger.info("Nginx installation script completed successfully.")
 
     #The script work but returned a failed exit code.
     except subprocess.CalledProcessError as e:

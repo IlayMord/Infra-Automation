@@ -3,11 +3,11 @@
 #The script installs Nginx on the system.
 
 #Log file location.
-log_file="$(dirname "$0")/../logs/nginx_script.log"
+log_file="$(dirname "$0")/../logs/installation.log"
 
 #logging format.
 log() {
-    printf "%s - %s - %s - %s\n" \
+    printf "%s - %s - %s\n" \
         "$(date '+%Y-%m-%d %H:%M:%S,%3N')" \
         "$1" \
         "$2" >> "$log_file"
