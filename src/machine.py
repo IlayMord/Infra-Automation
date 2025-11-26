@@ -12,8 +12,8 @@ class Machine(BaseModel):
     @field_validator("Name")
     def name_check(cls, value):
         value = value.strip()
-        if len(value) < 2:
-            raise ValueError("Name must contain at least 2 charcters")
+        if not 2 <= len(value) <= 20:
+            raise ValueError("Name must contain 2 to 20 characters")
         return value
 
     @field_validator("OS")
@@ -47,7 +47,3 @@ class Machine(BaseModel):
     def change_to_dict(self):
         return self.model_dump()
     
-    #Log machine creation.
-    def log_machine_creation(self):
-        logger.info(f"The machine created: Name= {self.Name},OS= {self.OS}, CPU= {self.CPU}, RAM= {self.RAM} GB, DiskSize= {self.DiskSize} GB")
-

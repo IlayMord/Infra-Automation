@@ -1,6 +1,5 @@
 import os
 import json
-import sys
 from pydantic import ValidationError
 from src.logging_config import logger
 from src.machine import Machine
@@ -42,8 +41,6 @@ def change_to_json(machines_list):
         json.dump(machines_list ,file, indent= 4)
         logger.info(f'Configuratuion saved to: {path}')
 
-
-
 def main():
     raw_machines = collect_machine_data()
     validated_machines = []
@@ -52,7 +49,9 @@ def main():
         #Validate and create machine object.
         for machine_data in raw_machines:
             machine = Machine(**machine_data)
-            machine.log_machine_creation()
+            
+            #Log machine creation.
+            logger.info(f"Machine created: {machine.model_dump()}")
 
             validated_machines.append(machine.change_to_dict())
 
