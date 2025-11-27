@@ -1,5 +1,4 @@
 from pydantic import BaseModel,field_validator
-from src.logging_config import logger
 
 class Machine(BaseModel):
     Name: str
