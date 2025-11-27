@@ -12,6 +12,7 @@ Features:
 - Creates required directories and log files if they do not exist.
 - Performs validation on machine parameters before provisioning.
 - Generates clear, timestamped logs for troubleshooting.
+- Aggregates all logs into logs/provisioning.log (created automatically).
 - Supports Ubuntu and any Linux distribution that uses the APT package manager.
 
 Project Structure:
@@ -21,11 +22,15 @@ src/ - Core modules (validation, models, utilities)
 logs/ - Generated logs and execution results
 infra_simulator.py - Main automation entry point
 
+Prerequisites:
+- Python 3.10+ and `pip install -r requirements.txt`
+- Target machines should use an APT-based Linux distribution (Ubuntu/Debian). Running the controller from Windows is fine, but provisioning assumes APT.
+
 How to Use:
-1. Create or update a machine configuration file inside configs/.
-2. Run the main automation script (infra_simulator.py).
-3. The system will validate the configuration, run provisioning scripts, and save results.
-4. Review all logs and outputs inside the logs/ directory.
+1. Install dependencies: `pip install -r requirements.txt`.
+2. Run the main automation script: `python infra_simulator.py`.
+3. Follow the prompts to enter machine fields; the script validates and writes configs/instances.json.
+4. Review progress and errors in logs/provisioning.log (auto-created).
 
 Notes:
 - Requires an APT-based Linux system (Ubuntu or similar).

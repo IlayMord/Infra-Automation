@@ -13,7 +13,7 @@ class Machine(BaseModel):
     def name_check(cls, value):
         value = value.strip()
         if not 2 <= len(value) <= 20:
-            raise ValueError("Name must contain 2 to 20 characters")
+            raise ValueError("Name must contain between 2 and 20 characters")
         return value
 
     @field_validator("OS")

@@ -30,8 +30,8 @@ def collect_machine_data():
 
 #Save validated machine data to JSON file.
 def change_to_json(machines_list):
-    base = os.path.dirname(__file__)
-    path = os.path.join(base, "..","configs","instances.json")
+    base = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(base, "configs", "instances.json")
 
     #Create a dir if it dosnt exsist.
     os.makedirs(os.path.dirname(path), exist_ok=True)
